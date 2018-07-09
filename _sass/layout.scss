@@ -1,0 +1,70 @@
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+.nav {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 1rem;
+  height: 50px;
+  border-bottom: 1px solid #d5d5d5;
+}
+
+.content {
+  flex: 1 0 auto;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.footer {
+  flex-shrink: 0;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 1rem;
+  border-top: 1px solid #d5d5d5;
+  font-size: .8em;
+  height: 50px;
+}
+
+@media (min-width: 576px) {
+  .content, .nav, .footer {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .content, .nav, .footer {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .content, .nav, .footer {
+    max-width: 960px;
+  }
+}
+
+.footer ul,
+.nav ul {
+  font-size: 1em;
+  padding: 0;
+  list-style: none;
+  font-weight: bold;
+}
+
+.footer ul li,
+.nav ul li {
+  display: inline;
+  margin-right: 20px;
+}

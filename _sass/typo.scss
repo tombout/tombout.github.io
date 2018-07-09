@@ -25,6 +25,7 @@ h6 {
   line-height: 1.2;
   color: inherit;
   text-transform: capitalize;
+  margin: 0 0 0.5rem;
 }
 
 h1 {
@@ -49,6 +50,11 @@ h5 {
 
 h6 {
   font-size: 1rem;
+}
+
+// Paragraphs
+p {
+  margin: 0 0 1rem;
 }
 
 // Links
