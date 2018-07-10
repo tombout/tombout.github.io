@@ -3,3 +3,5 @@ description: Passionated Zombie
 sass:
   sass_dir: _sass
   style: compressed
+plugins:
+  - jekyll-sitemap
