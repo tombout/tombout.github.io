@@ -24,7 +24,7 @@ winpty docker run --rm -it alpine sh
 / $
 ~~~
 
-That was easy. But if I am going to mount the current directory on container start I get
+That was easy. But if I am going to mount the current directory on container startup I get
 an error.
 
 ~~~ shell
