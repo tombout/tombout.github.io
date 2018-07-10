@@ -40,7 +40,6 @@ Also when I try something like <code>ls /usr</code> on a container I get an erro
 
 ~~~ shell
 winpty docker run --rm -it alpine ls /usr
-
 # Output
 ls: C:/Program Files/Git/usr: No such file or directory
 ~~~
