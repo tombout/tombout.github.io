@@ -12,38 +12,38 @@ Docker run commands with both <code>--interactive</code> and <code>--tty</code>
 
 To run a Docker container with interactive mode and pseudo-TTY I have to use Winpty.
 
-{% highlight bash %}
+~~~ shell
 docker run --rm -it alpine sh
 # Output
 the input device is not a TTY.  If you are using mintty, try prefixing the command with 'winpty'
-{% endhighlight %}
+~~~
 
-{% highlight bash %}
+~~~ shell
 winpty docker run --rm -it alpine sh
 # Output
 / $
-{% endhighlight %}
+~~~
 
 That was easy. But if I am going to mount the current directory on container start I get
 an error.
 
-{% highlight bash %}
+~~~ shell
 winpty docker run --rm -it -v $PWD:/mnt alpine sh
 # Output
 C:/Program Files/Docker/Docker/Resources/bin/docker.exe: Error response from daemon: Mount denied:
 The source path "C:/Users/Thomas/Workspaces;C"
 doesn't exist and is not known to Docker.
 See 'C:/Program Files/Docker/Docker/Resources/bin/docker.exe run --help'.
-{% endhighlight %}
+~~~
 
 Also when I try something like <code>ls /usr</code> on a container I get an error.
 
-{% highlight bash %}
+~~~ shell
 winpty docker run --rm -it alpine ls /usr
 
 # Output
 ls: C:/Program Files/Git/usr: No such file or directory
-{% endhighlight %}
+~~~
 
 It seems that Docker gets wrong paths from Winpty.
 
@@ -51,12 +51,12 @@ I have found several suggestions how to handle this. But only one is acceptable 
 and this is to execute <code>exec winpty bash</code> before I start my Docker session.
 After this I can run all Docker commands without to prefix with Winpty without problems.
 
-{% highlight bash %}
+~~~ shell
 exec winpty bash
 docker run --rm -it -v $PWD:/mnt alpine sh
 # Output
 / $
-{% endhighlight %}
+~~~
 
 I do not know why <code>exec winpty bash</code> solves this problem. And I do not know
 if this has any impact for other programs but for now I am happy that I have found this
@@ -65,8 +65,8 @@ solution randomly on this [comment](https://github.com/docker/toolbox/issues/323
 Sadly this does not solve the problem to run <code>ls /usr</code> on a container. For this
 I have to prefix the container path with an extra slash (/).
 
-{% highlight bash %}
+~~~ shell
 docker run --rm -it alpine ls //usr
 # Output
 bin    lib    local  sbin   share
-{% endhighlight %}
+~~~

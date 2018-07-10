@@ -13,18 +13,18 @@ is how to test the page on a local machine before pushing it to Github.
 Because I do not want to install Jekyll on my OS I chose to use the Jekyll Docker
 image to build the site locally:
 
-{% highlight bash %}
+~~~ shell
 docker run --rm --name jekyll-serve \
     -v $PWD:/srv/jekyll \
     -p 4000:4000 jekyll/jekyll jekyll serve\
     --force_polling # --force_polling only needed on Windows
-{% endhighlight %}
+~~~
 
 As long as the Docker container is running you can see all changes on your page in no
 time at http://localhost:4000/.
 
 After work you can stop the Jekyll container with:
 
-{% highlight bash %}
+~~~ shell
 docker stop jekyll-serve
-{% endhighlight %}
+~~~
