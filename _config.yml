@@ -5,3 +5,9 @@ sass:
   style: compressed
 plugins:
   - jekyll-sitemap
+defaults:
+  -
+    scope:
+      path: "googleb7aae16e0112ddf6.html"
+    values:
+      sitemap: false
