@@ -51,6 +51,7 @@ and this is to execute <code>exec winpty bash</code> before I start my Docker se
 After this I can run all Docker commands without to prefix with Winpty without problems.
 
 ~~~ shell
+export MSYS_NO_PATHCONV=1
 exec winpty bash
 docker run --rm -it -v $PWD:/mnt alpine sh
 # Output
@@ -60,12 +61,3 @@ docker run --rm -it -v $PWD:/mnt alpine sh
 I do not know why <code>exec winpty bash</code> solves this problem. And I do not know
 if this has any impact for other programs but for now I am happy that I have found this
 solution randomly on this [comment](https://github.com/docker/toolbox/issues/323#issuecomment-376276636).
-
-Sadly this does not solve the problem to run <code>ls /usr</code> on a container. For this
-I have to prefix the container path with an extra slash (/).
-
-~~~ shell
-docker run --rm -it alpine ls //usr
-# Output
-bin    lib    local  sbin   share
-~~~
